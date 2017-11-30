@@ -1,8 +1,8 @@
 # Maintainer: davido <david@ostrovsky.org>
 
 pkgname=bazel
-pkgver=0.7.0
-pkgrel=1
+pkgver=0.8.0
+pkgrel=0
 pkgdesc='Correct, reproducible, and fast builds for everyone'
 arch="all"
 license="ASL-2.0"
@@ -12,12 +12,13 @@ makedepends="git protobuf python"
 options="!distcc !strip"
 source="https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip
         https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig"
-sha512sums="039ab6a04fd4422bd14503187e6cc0d07301723b3ecae906606fa12ccea72190d82237899c103c1adfdf05dc8672887790780ddfb4cce87cd590adbde3d3f6d4  bazel-0.7.0-dist.zip
-4f89f8e14697bca06745db4bdc956ea8042ec60545827583092d0749822d73cabdc3c2744d38e9b37dd91bc318a9f3cb74e62c4509c2566076c8102b4eeaaa9b  bazel-0.7.0-dist.zip.sig"
+sha512sums="742eecf6f141632ecad25dcee978942004c1b37966c42cff2c1a5e97a01c0870d61959eb6b1d038d5a26ff2338871a2cdb65fa4fc02e37beca76b89981c837e1  bazel-0.8.0-dist.zip
+3f53609bdf6b011fbd411ea2cec68c064efda37fe87509c44bc29200daf6f7650f45545f372cbce4dd69570a13f462087fe9bd5c7b4c95ba0776d2580cd63803  bazel-0.8.0-dist.zip.sig"
 
 build() {
   ./compile.sh
   # Patch bazel: https://github.com/bazelbuild/bazel/issues/4055
+  # https://bugs.alpinelinux.org/issues/8121
   sed -i.bak 's/expr --/expr/' scripts/generate_bash_completion.sh
   ./output/bazel build -s --verbose_failures scripts:bazel-complete.bash
   cd output
