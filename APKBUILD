@@ -1,7 +1,7 @@
 # Maintainer: David Ostrovsky <david@ostrovsky.org>
 
 pkgname=bazel
-pkgver=0.19.0
+pkgver=0.21.0
 pkgrel=0
 pkgdesc='Correct, reproducible, and fast builds for everyone'
 arch="all"
@@ -16,12 +16,12 @@ options="!distcc !strip"
 source="https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip
         https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig"
 
-sha512sums="ea67fb4d13487d24a0442084f42ff3c082a107c56a06d882f579064f17c545d6e9b5f0c4d724238c22e9b3bad12c68c60c58b59f82d9e957fe3af222d44bc969  bazel-0.19.0-dist.zip
-c427bd8ffe52bc55da832688493874288d8e84c87742ec5917f987591ce923b2f84a964086a0d9aaeaaf6e1ba44ec64084c880f8d366c21386b479bbc0126fea  bazel-0.19.0-dist.zip.sig"
+sha512sums="96489dac0b0daf84c8711e5e11dc7d810c3a1f037e567bc5f3d5a3fb20d8eeeb512238ca9cace1c7f8b570687c43269abb037fb42a4c4b97392e0af7d45bb653  bazel-0.21.0-dist.zip
+8ee33051a40f46873bcf85d8c80389cf00c59818ba8893117be87e25d7413f4c6b6eddf08d53bdcb33d31616f43d64a80c472d0c91a0783fe79c8020a3d40d45  bazel-0.21.0-dist.zip.sig"
 
 build() {
   export JAVA_HOME=/usr/lib/jvm/default-jvm
-  ./compile.sh
+  EXTRA_BAZEL_ARGS=--host_javabase=@local_jdk//:jdk ./compile.sh
   scripts/generate_bash_completion.sh --bazel=output/bazel --output=output/bazel-complete.bash --prepend=scripts/bazel-complete-template.bash
   output/bazel shutdown
   echo startup --server_javabase=$JAVA_HOME >> scripts/packages/bazel.bazelrc
