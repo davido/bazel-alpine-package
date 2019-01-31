@@ -1,7 +1,7 @@
 # Maintainer: David Ostrovsky <david@ostrovsky.org>
 
 pkgname=bazel
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=0
 pkgdesc='Correct, reproducible, and fast builds for everyone'
 arch="all"
@@ -12,12 +12,12 @@ depends="bash openjdk8 libarchive zip unzip"
 # Patch bazel: https://github.com/bazelbuild/bazel/issues/4055
 # https://bugs.alpinelinux.org/issues/8121
 makedepends="coreutils git linux-headers protobuf python"
-options="!distcc !strip"
+options="!distcc !strip !check"
 source="https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip
         https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig"
 
-sha512sums="96489dac0b0daf84c8711e5e11dc7d810c3a1f037e567bc5f3d5a3fb20d8eeeb512238ca9cace1c7f8b570687c43269abb037fb42a4c4b97392e0af7d45bb653  bazel-0.21.0-dist.zip
-8ee33051a40f46873bcf85d8c80389cf00c59818ba8893117be87e25d7413f4c6b6eddf08d53bdcb33d31616f43d64a80c472d0c91a0783fe79c8020a3d40d45  bazel-0.21.0-dist.zip.sig"
+sha512sums="b93cd21f0f164c118b90efba761a9492eb9894e24f13ff468defd12b86c7e67f16e51060ac2fc4c2f8dbf51b1c833d41b255fdd8107988e5babf093cfc5b3254  bazel-0.22.0-dist.zip
+65cedf12b5650ca0708b4fadeeefee1f3f680d6f09ba1e3ffe2e3d42855e558712feacb3f99566902d9f94b5ed0b763e3cc0b13dfd6ffb7046e73468d003faca  bazel-0.22.0-dist.zip.sig"
 
 build() {
   export JAVA_HOME=/usr/lib/jvm/default-jvm
