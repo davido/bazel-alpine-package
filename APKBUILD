@@ -1,7 +1,7 @@
 # Maintainer: David Ostrovsky <david@ostrovsky.org>
 
 pkgname=bazel
-pkgver=0.22.0
+pkgver=0.26.0
 pkgrel=0
 pkgdesc='Correct, reproducible, and fast builds for everyone'
 arch="all"
@@ -16,8 +16,8 @@ options="!distcc !strip !check"
 source="https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip
         https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig"
 
-sha512sums="b93cd21f0f164c118b90efba761a9492eb9894e24f13ff468defd12b86c7e67f16e51060ac2fc4c2f8dbf51b1c833d41b255fdd8107988e5babf093cfc5b3254  bazel-0.22.0-dist.zip
-65cedf12b5650ca0708b4fadeeefee1f3f680d6f09ba1e3ffe2e3d42855e558712feacb3f99566902d9f94b5ed0b763e3cc0b13dfd6ffb7046e73468d003faca  bazel-0.22.0-dist.zip.sig"
+sha512sums="e3471bbd3daf44f9a34ed6f8125f666cc2297f1b9e32ac57259cdb45161fdbb9cf6a9595849746a69ba1164e4bb0c916d5cdf351d7b40eab9ce31972ec622ad7  bazel-0.26.0-dist.zip
+ac4805ecd6a34a0782a2fefcdbbe8a2e9c6482b315b4f1dab49fc7bb1db13f03090d45629b5a7e4ed5af4f072d9460258a0b279e6f7edd129b4b20741326b7ab  bazel-0.26.0-dist.zip.sig"
 
 build() {
   export JAVA_HOME=/usr/lib/jvm/default-jvm
